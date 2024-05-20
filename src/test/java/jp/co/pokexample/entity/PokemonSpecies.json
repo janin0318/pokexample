@@ -1,0 +1,26 @@
+{
+  "flavor_text_entries": [
+    {
+      "flavor_text": "フレーバーテキスト",
+      "language": {
+        "name": "ja-Hrkt",
+        "url": "https://pokeapi.co/api/v2/language/11/"
+      },
+      "version": {
+        "name": "omega-ruby",
+        "url": "https://pokeapi.co/api/v2/version/25/"
+      }
+    }
+  ],
+  "id": 1,
+  "name": "bulbasaur",
+  "names": [
+    {
+      "language": {
+        "name": "ja-Hrkt",
+        "url": "https://pokeapi.co/api/v2/language/1/"
+      },
+      "name": "フシギダネ"
+    }
+  ]
+}

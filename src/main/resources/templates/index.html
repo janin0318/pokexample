@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>トップページ</title>
+  <link th:href="@{/css/styles.css}" rel="stylesheet">
+</head>
+<body>
+<header>
+  <h1>ポケモン図鑑</h1>
+</header>
+<main>
+  <form action="/search" method="get">
+    <input type="text" id="search" name="id" placeholder="図鑑番号でポケモンを検索">
+    <button class="search-button" type="submit">検索</button>
+  </form>
+</main>
+</body>
+</html>
