@@ -19,12 +19,14 @@ public class PokemonSpecies {
   private final String nameJp;
   private final String flavorText;
   private final String flavorTextVersion;
+  private final String genera;
 
   public PokemonSpecies(final JsonNode jsonNode) {
     this.id = jsonNode.get("id").asInt();
     this.nameJp = createNameJp(jsonNode);
     this.flavorText = createFlavorText(jsonNode);
     this.flavorTextVersion = createFlavorTextVersion(jsonNode);
+    this.genera = createGenera(jsonNode);
   }
 
   /**
@@ -52,6 +54,11 @@ public class PokemonSpecies {
   private String createFlavorTextVersion(final JsonNode jsonNode) {
     JsonNode flavorTextNode = getJaJsonNode(jsonNode.get("flavor_text_entries"));
     return flavorTextNode.get("version").get("name").asText();
+  }
+
+  private String createGenera(final JsonNode jsonNode) {
+    JsonNode generaNode = getJaJsonNode(jsonNode.get("genera"));
+    return generaNode.get("genus").asText();
   }
 
   /**
