@@ -9,10 +9,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @Log4j2
+@RequestMapping("/pokemon")
 public class PokemonController {
 
   private final PokemonService pokemonService;
@@ -21,7 +23,7 @@ public class PokemonController {
     this.pokemonService = pokemonService;
   }
 
-  @GetMapping("/id/{id}")
+  @GetMapping("/{id}")
   public String getById(@PathVariable("id") String id, Model model) {
     Pokemon pokemon = pokemonService.buildPokemon(id);
     model.addAttribute("pokemon", pokemon);
@@ -30,7 +32,7 @@ public class PokemonController {
 
   @GetMapping("/search")
   public String search(@RequestParam String id) {
-    return "redirect:/id/" + id;
+    return "redirect:/pokemon/" + id;
   }
 
   @ExceptionHandler(PokemonNotExistException.class)
