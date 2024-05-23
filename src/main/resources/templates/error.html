@@ -1,15 +1,14 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="ja">
 <head>
-  <th:block th:insert="~{layout/_header}" th:with="title=${'404 Not Found'}" />
+  <th:block th:insert="~{layout/_header}" th:with="title=${'500（Internal Server Error）'}" />
 </head>
 <body>
 <header>
   <h1>ポケモン図鑑</h1>
 </header>
 <main>
-  <th:block th:insert="~{layout/_sreach}" />
-  <h1>ポケモンが見つかりませんでした。</h1>
+  <h1>Internal Server Error</h1>
 </main>
 </body>
 </html>

@@ -51,11 +51,23 @@ public class PokemonSpecies {
     return flavorTextNode.get("flavor_text").asText();
   }
 
+  /**
+   * pokemon-speciesからフレーバーテキストのバージョン（世代）を取得する。
+   *
+   * @param jsonNode pokemon-speciesの実施結果
+   * @return フレーバーテキストのバージョン
+   */
   private String createFlavorTextVersion(final JsonNode jsonNode) {
     JsonNode flavorTextNode = getJaJsonNode(jsonNode.get("flavor_text_entries"));
     return flavorTextNode.get("version").get("name").asText();
   }
 
+  /**
+   * pokemon-speciesからポケモンの種族を取得する。
+   *
+   * @param jsonNode pokemon-speciesの実施結果
+   * @return
+   */
   private String createGenera(final JsonNode jsonNode) {
     JsonNode generaNode = getJaJsonNode(jsonNode.get("genera"));
     return generaNode.get("genus").asText();

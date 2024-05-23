@@ -11,7 +11,7 @@
   <th:block th:insert="~{layout/_sreach}" />
   <br>
   <div class="pokedex-entry">
-    <img th:src="${pokemon.getBase().getOfficialArtwork()}" th:alt="${pokemon.getBase().getName()}">
+    <img th:src="${pokemon.getBase().getOfficialArtworkURL()}" th:alt="${pokemon.getBase().getName()}">
     <h2 th:text="${pokemon.getSpecies().getNameJp()}">ピカチュウ</h2>
     <p th:text="${pokemon.getSpecies().getGenera()}">でんきタイプのポケモン。</p>
     <button class="modal-button" data-flavor="flavor1"
