@@ -23,5 +23,6 @@ class PokemonSpeciesTest {
     assertEquals(result.getNameJp(), "フシギダネ");
     assertEquals(result.getFlavorText(), "フレーバーテキスト");
     assertEquals(result.getFlavorTextVersion(), "omega-ruby");
+    assertEquals(result.getGenera(), "たねポケモン");
   }
 }
