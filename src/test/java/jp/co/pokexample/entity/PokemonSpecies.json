@@ -22,5 +22,14 @@
       },
       "name": "フシギダネ"
     }
+  ],
+  "genera": [
+    {
+      "language": {
+        "name": "ja-Hrkt",
+        "url": "https://pokeapi.co/api/v2/language/1/"
+      },
+      "genus": "たねポケモン"
+    }
   ]
 }

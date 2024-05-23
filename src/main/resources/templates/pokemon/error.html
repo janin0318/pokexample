@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="ja">
 <head>
-  <th:block th:insert="~{layout/_header}" th:with="title=${'トップページ'}" />
+  <th:block th:insert="~{layout/_header}" th:with="title=${'404 Not Found'}" />
 </head>
 <body>
 <header>
@@ -9,6 +9,7 @@
 </header>
 <main>
   <th:block th:insert="~{layout/_sreach}" />
+  <h1>ポケモンが見つかりませんでした。</h1>
 </main>
 </body>
 </html>

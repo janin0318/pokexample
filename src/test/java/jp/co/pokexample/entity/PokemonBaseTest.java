@@ -25,6 +25,6 @@ class PokemonBaseTest {
 
     assertEquals(result.getId(), 1);
     assertEquals(result.getName(), "bulbasaur");
-    assertEquals(result.getOfficialArtwork(), "front_default");
+    assertEquals(result.getOfficialArtworkURL(), "front_default");
   }
 }

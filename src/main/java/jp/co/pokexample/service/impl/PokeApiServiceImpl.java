@@ -6,6 +6,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import java.util.Objects;
 import jp.co.pokexample.exception.PokemonNotExistException;
 import jp.co.pokexample.service.PokeApiService;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,6 +14,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 @Service
+@Log4j2
 public class PokeApiServiceImpl implements PokeApiService {
 
   private final RestTemplate restTemplate;
@@ -26,10 +28,6 @@ public class PokeApiServiceImpl implements PokeApiService {
   @Override
   public JsonNode doApi(final Object param, final String URL) {
     ResponseEntity<String> pokeApiResult = restTemplate.getForEntity(URL + param, String.class);
-
-    if (!Objects.equals(pokeApiResult.getStatusCode(), HttpStatus.OK)) {
-      throw new PokemonNotExistException("Failed to call Poke API");
-    }
 
     JsonNode result;
     try {
