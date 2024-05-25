@@ -3,12 +3,9 @@ package jp.co.pokexample.service.impl;
 import com.fasterxml.jackson.core.JacksonException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import java.util.Objects;
-import jp.co.pokexample.exception.PokemonNotExistException;
 import jp.co.pokexample.service.PokeApiService;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.boot.web.client.RestTemplateBuilder;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -33,7 +30,7 @@ public class PokeApiServiceImpl implements PokeApiService {
     try {
       result = objectMapper.readTree(pokeApiResult.getBody());
     } catch (JacksonException e) {
-      throw new PokemonNotExistException("Failed to call Poke API");
+      throw new RuntimeException(e);
     }
     return result;
   }

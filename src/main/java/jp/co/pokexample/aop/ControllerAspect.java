@@ -11,6 +11,9 @@ import org.springframework.stereotype.Component;
 @Log4j2
 public class ControllerAspect {
 
+  /**
+   * コントローラーの処理前に実施されるAspect
+   */
   @Before("execution(* jp.co.pokexample.controller.*.*(..))")
   public void beforeController(JoinPoint joinPoint) {
     log.info("{} 開始：引数 {}", joinPoint.getSignature().getName(), joinPoint.getArgs());
