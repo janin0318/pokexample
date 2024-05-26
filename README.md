@@ -2,13 +2,13 @@
 
 ## 使用技術
 
-<img src="https://img.shields.io/badge/Java17-000000.svg?logo=Java" alt="Java">
-<img src="https://img.shields.io/badge/Spring-000000.svg?logo=Spring" alt="Spring">
-<img src="https://img.shields.io/badge/SpringBoot-000000.svg?logo=SpringBoot" alt="SpringBoot">
-<img src="https://img.shields.io/badge/Gradle-000000.svg?logo=Gradle" alt="Gradle">
-<img src="https://img.shields.io/badge/Thymeleaf-000000.svg?logo=Thymeleaf" alt="Thymeleaf">
-<img src="https://img.shields.io/badge/JavaScript-000000.svg?logo=JavaScript" alt="JavaScript">
-<img src="https://img.shields.io/badge/CSS3-000000.svg?logo=CSS3" alt="CSS3">
+![Java](https://img.shields.io/badge/Java17-000000.svg?logo=Java)
+![Spring](https://img.shields.io/badge/Spring-000000.svg?logo=Spring)
+![SpringBoot](https://img.shields.io/badge/SpringBoot-000000.svg?logo=SpringBoot)
+![Gradle](https://img.shields.io/badge/Gradle-000000.svg?logo=Gradle)
+![Thymeleaf](https://img.shields.io/badge/Thymeleaf-000000.svg?logo=Thymeleaf)
+![JavaScript](https://img.shields.io/badge/JavaScript-000000.svg?logo=JavaScript)
+![CSS3](https://img.shields.io/badge/CSS3-000000.svg?logo=CSS3)
 
 ## プロジェクト概要
 
@@ -34,5 +34,5 @@ SpringBootとPokeApi（[公式サイト](https://pokeapi.co/)）を利用した�
 
 1. Java17をインストール
 2. ターミナル（コマンドプロンプト）でpokexampleのディレクトリ直下に移動
-3. `./gradlew build` を実行
+3. `./gradlew bootRun` を実行
 4. `http://localhost:8080/` にアクセスし、トップ画面が表示されれば成功
