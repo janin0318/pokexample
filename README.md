@@ -2,6 +2,9 @@
 
 ## 使用技術
 
+![Java](https://img.shields.io/badge/Java17-000000.svg?logo=Java)
+![Java](https://img.shields.io/badge/Spring-000000.svg?logo=Spring)
+
 <img src="https://img.shields.io/badge/Java17-000000.svg?logo=Java" alt="Java">
 <img src="https://img.shields.io/badge/Spring-000000.svg?logo=Spring" alt="Spring">
 <img src="https://img.shields.io/badge/SpringBoot-000000.svg?logo=SpringBoot" alt="SpringBoot">
