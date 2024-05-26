@@ -24,7 +24,7 @@ public class PokemonController {
   }
 
   @GetMapping("/{id}")
-  public String getById(@PathVariable("id") String id, Model model) {
+  public String show(@PathVariable("id") String id, Model model) {
     Pokemon pokemon = pokemonService.buildPokemon(id);
     model.addAttribute("pokemon", pokemon);
     return "pokemon/show";
@@ -41,7 +41,7 @@ public class PokemonController {
    * @return 404画面
    */
   @ExceptionHandler(HttpClientErrorException.NotFound.class)
-  public String pokemonNotExist() {
+  public String error() {
     return "pokemon/error";
   }
 }

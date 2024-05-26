@@ -3,7 +3,7 @@ package jp.co.pokexample.service.impl;
 import com.fasterxml.jackson.databind.JsonNode;
 import jp.co.pokexample.entity.Pokemon;
 import jp.co.pokexample.entity.PokemonBase;
-import jp.co.pokexample.entity.PokemonSpecies;
+import jp.co.pokexample.entity.species.Species;
 import jp.co.pokexample.service.PokeApiService;
 import jp.co.pokexample.service.PokemonService;
 import lombok.extern.log4j.Log4j2;
@@ -21,8 +21,8 @@ public class PokemonServiceImpl implements PokemonService {
 
   @Override
   public Pokemon buildPokemon(String id) {
-    JsonNode speciesJsonNode = pokeApiService.doApi(id, PokemonSpecies.POKE_API_URL);
-    PokemonSpecies species = new PokemonSpecies(speciesJsonNode);
+    JsonNode speciesJsonNode = pokeApiService.doApi(id, Species.POKE_API_URL);
+    Species species = new Species(speciesJsonNode);
 
     JsonNode baseJsonNode = pokeApiService.doApi(id, PokemonBase.URL);
     PokemonBase base = new PokemonBase(baseJsonNode);
