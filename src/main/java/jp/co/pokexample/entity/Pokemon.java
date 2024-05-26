@@ -1,5 +1,6 @@
 package jp.co.pokexample.entity;
 
+import jp.co.pokexample.entity.species.Species;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
@@ -8,5 +9,5 @@ import lombok.Getter;
 public class Pokemon {
 
   private PokemonBase base;
-  private PokemonSpecies species;
+  private Species species;
 }
