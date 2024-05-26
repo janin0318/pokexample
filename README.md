@@ -34,5 +34,5 @@ SpringBootとPokeApi（[公式サイト](https://pokeapi.co/)）を利用した�
 
 1. Java17をインストール
 2. ターミナル（コマンドプロンプト）でpokexampleのディレクトリ直下に移動
-3. `./gradlew build` を実行
+3. `./gradlew bootRun` を実行
 4. `http://localhost:8080/` にアクセスし、トップ画面が表示されれば成功
