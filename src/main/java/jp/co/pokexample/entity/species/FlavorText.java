@@ -7,8 +7,8 @@ import lombok.Getter;
 @Getter
 public class FlavorText {
 
-  String text;
-  String version;
+  private final String text;
+  private final String version;
 
   FlavorText(JsonNode flavorTexts) {
     this.text = flavorTexts.get("flavor_text").asText();

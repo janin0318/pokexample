@@ -1,6 +1,7 @@
 package jp.co.pokexample.service.impl;
 
 import com.fasterxml.jackson.databind.JsonNode;
+import java.util.Objects;
 import jp.co.pokexample.entity.Pokemon;
 import jp.co.pokexample.entity.PokemonBase;
 import jp.co.pokexample.entity.species.Species;
@@ -21,11 +22,15 @@ public class PokemonServiceImpl implements PokemonService {
 
   @Override
   public Pokemon buildPokemon(String id) {
-    JsonNode speciesJsonNode = pokeApiService.doApi(id, Species.POKE_API_URL);
-    Species species = new Species(speciesJsonNode);
-
-    JsonNode baseJsonNode = pokeApiService.doApi(id, PokemonBase.URL);
+    JsonNode baseJsonNode = pokeApiService.doApi(PokemonBase.URL + id);
     PokemonBase base = new PokemonBase(baseJsonNode);
+
+    if (PokemonBase.EMPTY_SPECIES_URL.equals(base.getSpeciesUrl())) {
+      return new Pokemon(base, null);
+    }
+
+    JsonNode speciesJsonNode = pokeApiService.doApi(base.getSpeciesUrl());
+    Species species = new Species(speciesJsonNode);
 
     return new Pokemon(base, species);
   }
