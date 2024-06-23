@@ -1,23 +1,34 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="ja">
 <head>
-  <th:block th:insert="~{layout/_header}" th:with="title=${pokemon.getSpecies().getNameJp()}" />
+  <th:block th:insert="~{layout/_header}" th:with="title=${pokemon.getSpecies().getNameJp()}"/>
 </head>
 <body>
 <header>
   <h1>ポケモン図鑑</h1>
 </header>
 <main>
-  <th:block th:insert="~{layout/_sreach}" />
+  <th:block th:insert="~{layout/_sreach}"/>
   <br>
   <div class="pokedex-entry">
-    <img th:src="${pokemon.getBase().getOfficialArtworkURL()}" th:alt="${pokemon.getBase().getName()}">
+    <img th:src="${pokemon.getBase().getOfficialArtworkURL()}"
+         th:alt="${pokemon.getBase().getName()}">
     <h2 th:text="${pokemon.getSpecies().getNameJp()}">ピカチュウ</h2>
     <p th:text="${pokemon.getSpecies().getGenera()}">でんきタイプのポケモン。</p>
+    <h3>図鑑説明</h3>
     <th:block th:each="flavorText, stat : ${pokemon.getSpecies().getFlavorTexts()}">
       <button class="modal-button" data-flavor="flavor + ${stat.index}"
               th:text="${flavorText.getVersion()}">図鑑説明
       </button>
+    </th:block>
+    <th:block th:if="!${#lists.isEmpty(pokemon.getSpecies().getVarieties())}">
+      <h3>ほかのすがた</h3>
+      <th:block th:each="variety : ${pokemon.getSpecies().getVarieties()}">
+        <a th:href="@{'/pokemon/' + ${variety.getId()}}" th:text="${variety.getName()}">
+          ほかのすがた
+        </a>
+        <br>
+      </th:block>
     </th:block>
   </div>
 </main>

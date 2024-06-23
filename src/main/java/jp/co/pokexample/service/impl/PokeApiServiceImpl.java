@@ -23,8 +23,8 @@ public class PokeApiServiceImpl implements PokeApiService {
   }
 
   @Override
-  public JsonNode doApi(final Object param, final String URL) {
-    ResponseEntity<String> pokeApiResult = restTemplate.getForEntity(URL + param, String.class);
+  public JsonNode doApi(final String url) {
+    ResponseEntity<String> pokeApiResult = restTemplate.getForEntity(url, String.class);
 
     JsonNode result;
     try {

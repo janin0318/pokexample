@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Objects;
 import lombok.Getter;
 import lombok.ToString;
+import org.springframework.util.CollectionUtils;
 
 @Getter
 @ToString
@@ -17,12 +18,14 @@ public class Species {
   private final String nameJp;
   private final List<FlavorText> flavorTexts;
   private final String genera;
+  private final List<Variety> varieties;
 
   public Species(final JsonNode jsonNode) {
     this.id = jsonNode.get("id").asInt();
     this.nameJp = createNameJp(jsonNode);
     this.flavorTexts = createFlavorTexts(jsonNode);
     this.genera = createGenera(jsonNode);
+    this.varieties = createVarieties(jsonNode);
   }
 
   /**
@@ -33,6 +36,9 @@ public class Species {
    */
   private String createNameJp(final JsonNode jsonNode) {
     List<JsonNode> nameNodes = getJaJsonNode(jsonNode.get("names"));
+    if (CollectionUtils.isEmpty(nameNodes)) {
+      return "";
+    }
     return nameNodes.get(0).get("name").asText();
   }
 
@@ -44,9 +50,18 @@ public class Species {
    */
   private String createGenera(final JsonNode jsonNode) {
     List<JsonNode> generaNodes = getJaJsonNode(jsonNode.get("genera"));
+    if (generaNodes.isEmpty()) {
+      return "";
+    }
     return generaNodes.get(0).get("genus").asText();
   }
 
+  /**
+   * フレーバーテキスト一覧を取得する
+   *
+   * @param jsonNode pokemon-speciesの実施結果
+   * @return FlavorTextリスト
+   */
   private List<FlavorText> createFlavorTexts(final JsonNode jsonNode) {
     List<FlavorText> flavorTexts = new ArrayList<>();
     List<JsonNode> flavorTextNodes = getJaJsonNode(jsonNode.get("flavor_text_entries"));
@@ -55,6 +70,23 @@ public class Species {
       flavorTexts.add(flavorText);
     }
     return flavorTexts;
+  }
+
+  /**
+   * いろいろな姿を取得する
+   * @param jsonNode pokemon-speciesの実施結果
+   * @return Varietyリスト
+   */
+  private List<Variety> createVarieties(final JsonNode jsonNode) {
+    List<Variety> varieties = new ArrayList<>();
+    JsonNode varietyNodes = jsonNode.get("varieties");
+    for (int i = 0; i < varietyNodes.size(); i++) {
+      if (!varietyNodes.get(i).get("is_default").asBoolean()) {
+        JsonNode pokemon = varietyNodes.get(i).get("pokemon");
+        varieties.add(new Variety(pokemon.get("name").asText(), pokemon.get("url").asText()));
+      }
+    }
+    return varieties;
   }
 
   /**
