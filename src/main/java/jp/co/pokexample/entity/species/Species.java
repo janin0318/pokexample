@@ -18,14 +18,14 @@ public class Species {
   private final String nameJp;
   private final List<FlavorText> flavorTexts;
   private final String genera;
-//  private final List<Variety> varieties;
+  private final List<Variety> varieties;
 
   public Species(final JsonNode jsonNode) {
     this.id = jsonNode.get("id").asInt();
     this.nameJp = createNameJp(jsonNode);
     this.flavorTexts = createFlavorTexts(jsonNode);
     this.genera = createGenera(jsonNode);
-//    this.varieties = createVarieties(jsonNode);
+    this.varieties = createVarieties(jsonNode);
   }
 
   /**
@@ -79,11 +79,11 @@ public class Species {
    */
   private List<Variety> createVarieties(final JsonNode jsonNode) {
     List<Variety> varieties = new ArrayList<>();
-    List<JsonNode> varietyNodes = getJaJsonNode(jsonNode.get("varieties"));
-    for (JsonNode varietyNode : varietyNodes) {
-      if (!varietyNode.get("is_default").asBoolean()) {
-        JsonNode pokemon = varietyNode.get("pokemon");
-        varieties.add(new Variety(pokemon.get("name").asText(), pokemon.get("url").asInt()));
+    JsonNode varietyNodes = jsonNode.get("varieties");
+    for (int i = 0; i < varietyNodes.size(); i++) {
+      if (!varietyNodes.get(i).get("is_default").asBoolean()) {
+        JsonNode pokemon = varietyNodes.get(i).get("pokemon");
+        varieties.add(new Variety(pokemon.get("name").asText(), pokemon.get("url").asText()));
       }
     }
     return varieties;
