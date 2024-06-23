@@ -31,5 +31,28 @@
       },
       "genus": "たねポケモン"
     }
+  ],
+  "varieties": [
+    {
+      "is_default": true,
+      "pokemon": {
+        "name": "通常の姿",
+        "url": "https://pokeapi.co/api/v2/pokemon/800/"
+      }
+    },
+    {
+      "is_default": false,
+      "pokemon": {
+        "name": "メガシンカ",
+        "url": "https://pokeapi.co/api/v2/pokemon/800/"
+      }
+    },
+    {
+      "is_default": false,
+      "pokemon": {
+        "name": "ダイナマックス",
+        "url": "https://pokeapi.co/api/v2/pokemon/800/"
+      }
+    }
   ]
 }
